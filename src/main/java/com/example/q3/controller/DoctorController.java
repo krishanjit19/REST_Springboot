@@ -17,20 +17,17 @@ public class DoctorController {
     }
 
     @GetMapping("/{id}")
-    public String getDoctorDetails(@PathVariable Long id) {
-        // Implement logic to return doctor details in JSON format or default error view
-        return "Doctor details for ID " + id;
+    public Doctor getDoctorDetails(@PathVariable Long id) {
+        return doctorService.getDoctorDetails(id);
     }
 
     @PostMapping
-    public String addDoctor(@RequestBody Doctor doctor) {
-        // Implement logic to add a new doctor and return the doctor ID
-        return "Added doctor with ID " + doctor.getId();
+    public Long addDoctor(@RequestBody Doctor doctor) {
+        return doctorService.addDoctor(doctor);
     }
 
     @DeleteMapping("/{id}")
-    public String deleteDoctor(@PathVariable Long id) {
-        // Implement logic to delete the doctor with the specified ID
-        return "Deleted doctor with ID " + id;
+    public void deleteDoctor(@PathVariable Long id) {
+        doctorService.deleteDoctor(id);
     }
 }
