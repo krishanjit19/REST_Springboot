@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor List</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #89C4F4
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #F2F1EF;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 0;
+        color: #333; /* Dark text color */
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Doctor List</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Specialty</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the list of doctors -->
+        <tr th:each="doctor : ${doctors}">
+            <td th:text="${doctor.id}"></td>
+            <td>
+                <!-- Add a link to the doctor's profile -->
+                <a th:href="@{'/doctors/' + ${doctor.id}}"> <!-- Assuming doctor's id is used in the URL -->
+                    <span th:text="${doctor.name}"></span>
+                </a>
+            </td>
+            <td th:text="${doctor.specialty}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

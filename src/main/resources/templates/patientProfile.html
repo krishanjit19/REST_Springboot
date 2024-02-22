@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #89C4F4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #F2F1EF;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex; /* Use flexbox for layout */
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-right: 20px;
+        }
+        .profile-details {
+            flex-grow: 1; /* Allow the details to grow to fill available space */
+        }
+        .profile-details h1 {
+            margin-top: 0; /* Remove default margin for h1 */
+        }
+        .profile-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Profile picture on the side -->
+    <img class="profile-pic" src="https://imgs.search.brave.com/C98PnTLuUEdNuO_ruurNGTRKvpIaecJk_XNynAjKVPQ/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS12ZWN0/b3IvYXZhdGFyLXBy/b2ZpbGUtY29sb3Jm/dWwtaWxsdXN0cmF0/aW9uLTJfNTQ5MjA5/LTgyLmpwZz9zaXpl/PTYyNiZleHQ9anBn" alt="Patient Profile Picture">
+    <div class="profile-details">
+        <h1>Patient Profile</h1>
+        <p><strong>ID:</strong> <span th:text="${patient.id}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${patient.name}"></span></p>
+        <p><strong>Age:</strong> <span th:text="${patient.age}"></span></p>
+        <!-- Add more profile information as needed -->
+    </div>
+</div>
+</body>
+</html>

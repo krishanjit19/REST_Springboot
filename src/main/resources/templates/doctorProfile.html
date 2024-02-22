@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #89C4F4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-details {
+            text-align: center;
+        }
+        .profile-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Doctor Profile</h1>
+    <img class="profile-pic" src="https://imgs.search.brave.com/rV7E1qsPSN4f65Fsjr-lgzugvi5Qfz5eZXN6cqAT6P4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/c2tldGNoYXBwc291/cmNlcy5jb20vcmVz/b3VyY2VzL3NvdXJj/ZS1pbWFnZS9kb2N0/b3ItaWxsdXN0cmF0/aW9uLWhhbWFtemFp/LnBuZw" alt="Doctor Profile Picture">
+    <div class="profile-details">
+        <p><strong>ID:</strong> <span th:text="${doctor.id}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${doctor.name}"></span></p>
+        <p><strong>Specialty:</strong> <span th:text="${doctor.specialty}"></span></p>
+        <!-- Add more profile information as needed -->
+    </div>
+</div>
+</body>
+</html>
