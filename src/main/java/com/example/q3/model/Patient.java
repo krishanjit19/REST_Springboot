@@ -1,11 +1,9 @@
 package com.example.q3.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "patient")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,12 +11,12 @@ public class Patient {
     private String name;
     private int age;
 
-    public Patient() {
-    }
-
     public Patient(String name, int age) {
         this.name = name;
         this.age = age;
+    }
+    public Patient(){
+
     }
 
     public Long getId() {

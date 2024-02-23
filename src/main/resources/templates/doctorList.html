@@ -5,61 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctor List</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #89C4F4
-    }
-    .container {
-        max-width: 800px;
-        margin: 20px auto;
-        background-color: #F2F1EF;
-        border-radius: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-    }
-    h1 {
-        text-align: center;
-        margin-top: 0;
-        color: #333; /* Dark text color */
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    th, td {
-        padding: 10px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-    tr:hover {
-        background-color: #f2f2f2;
-    }
-</style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #89C4F4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #F2F1EF;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #333; /* Dark text color */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        /* Style buttons */
+        .btn {
+            padding: 8px 16px;
+            border: none; /* Remove default border */
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 5px; /* Add spacing between buttons */
+        }
+
+        .btn:hover {
+            background-color: #f2f2f2;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0062cc;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
     <h1>Doctor List</h1>
+    <a href="/doctors/new" class="btn btn-primary">Create New Doctor</a> <br/>
+    <br />
     <table>
         <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Specialty</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <!-- Iterate over the list of doctors -->
         <tr th:each="doctor : ${doctors}">
             <td th:text="${doctor.id}"></td>
             <td>
-                <!-- Add a link to the doctor's profile -->
-                <a th:href="@{'/doctors/' + ${doctor.id}}"> <!-- Assuming doctor's id is used in the URL -->
-                    <span th:text="${doctor.name}"></span>
+                <a th:href="@{'/doctors/' + ${doctor.id}}"> <span th:text="${doctor.name}"></span>
                 </a>
             </td>
             <td th:text="${doctor.specialty}"></td>
+            <td>
+                <a href="/doctors/{id}/edit" class="btn btn-primary" th:href="@{'/doctors/' + ${doctor.id} + '/edit'}">Edit</a>
+<!--                <a href="/doctors/{id}/delete" class="btn btn-danger" th:href="@{'/doctors/' + ${doctor.id} + '/delete'}">Delete</a>-->
+                <form th:action="@{'/doctors/' + ${doctor.id} + '/delete'}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>

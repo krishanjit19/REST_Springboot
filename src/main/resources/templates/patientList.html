@@ -36,28 +36,90 @@
         tr:hover {
             background-color: #f2f2f2;
         }
+        /* Style buttons */
+        .btn {
+            padding: 8px 16px;
+            border: none; /* Remove default border */
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            margin-right: 5px; /* Add spacing between buttons */
+        }
+
+        .btn:hover {
+            background-color: #f2f2f2;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0062cc;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .foot {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .foot:hover {
+            text-color: #f2f2f2;
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Patient List</h1>
+    <a href="/patients/new" class="btn btn-primary">Create New Patient</a> <br/>
+    <br/>
     <table>
         <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Age</th>
+            <th> Actions </th>
         </tr>
         </thead>
         <tbody>
-        <!-- Iterate over the list of patients -->
         <tr th:each="patient : ${patients}">
             <td th:text="${patient.id}"></td>
-            <td><a th:href="@{'/patients/' + ${patient.id}}"><span th:text="${patient.name}"></span></a></td>
+            <td>
+                <a th:href="@{'/patients/' + ${patient.id}}"> <span th:text="${patient.name}"></span>
+                </a>
+            </td>
             <td th:text="${patient.age}"></td>
+            <td>
+                <a href="/patients/{id}/edit" class="btn btn-primary" th:href="@{'/patients/' + ${patient.id} + '/edit'}">Edit</a>
+                <form th:action="@{'/patients/' + ${patient.id} + '/delete'}" method="post" style="display: inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
         </tr>
         </tbody>
     </table>
+</div>
+<div class="foot">
+    <a href="welcome.html"> Return to Main Menu </a>
 </div>
 </body>
 </html>
